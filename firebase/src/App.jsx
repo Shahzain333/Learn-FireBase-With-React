@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { useFireBase } from './context/firebase'
 
@@ -11,6 +9,15 @@ function App() {
 
   const firebase = useFireBase()
   //console.log("FireBase", firebase);
+
+  const putDataNew = async () => {
+    //firebase.putData('root/a/b',{ id: 1 })
+    firebase.putData('grandFather/Father/child', { 
+      id: 1,
+      name: "Ali",
+      age: 21 
+    })
+  }
 
   return (
     <>
@@ -33,6 +40,7 @@ function App() {
       }}>
           Sign Up
       </button>
+      <button onClick={putDataNew}>Triggere here</button>
     </>
   )
 }
