@@ -11,12 +11,12 @@ import {
 } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAB2lierZkdkha9q98jbR1JBg7MmhTyfsk",
-  authDomain: "bookify-475da.firebaseapp.com",
-  projectId: "bookify-475da",
-  storageBucket: "bookify-475da.firebasestorage.app",
-  messagingSenderId: "322929803723",
-  appId: "1:322929803723:web:1e17a7236231b37e26364e"
+  apiKey: import.meta.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.REACT_APP_FIREBASE_APP_ID
 };
 
 const FirebaseContext = createContext(null)
