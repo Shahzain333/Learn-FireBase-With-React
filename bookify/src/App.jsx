@@ -7,15 +7,25 @@ import { Route, Routes } from 'react-router-dom'
 // Pages Import
 import Register  from './pages/Register'
 import Login from './pages/Login';
+import List from './pages/List.jsx';
+import Home from './pages/Home.jsx';
+import BookDetails from './pages/BookDetails.jsx';
+// Components
+import MyNavbar from './components/Navbar.jsx';
 
 function App() {
 
   return (
-    <Routes>
-      <Route path='/' element={<h1>Home</h1>}></Route>
-      <Route path='/login' element={<Login />}></Route>
-      <Route path='/register' element={<Register />}></Route>
-    </Routes>
+    <div>
+      <MyNavbar />
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
+        <Route path='/book/list' element={<List />}></Route>
+        <Route path='/book/view/:bookId' element={<BookDetails />}></Route>
+      </Routes>
+    </div>
   )
 }
 
