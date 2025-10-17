@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import List from './pages/List.jsx';
 import Home from './pages/Home.jsx';
 import BookDetails from './pages/BookDetails.jsx';
+import ViewOrder from './pages/ViewOrder.jsx';
+import ViewOrderDetail from './pages/ViewOrderDetail.jsx';
 // Components
 import MyNavbar from './components/Navbar.jsx';
 
@@ -24,6 +26,8 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/book/list' element={<List />}></Route>
         <Route path='/book/view/:bookId' element={<BookDetails />}></Route>
+        <Route path='/book/orders' element={<ViewOrder />}></Route>
+        <Route path='/books/orders/:bookId' element={<ViewOrderDetail />}></Route>
       </Routes>
     </div>
   )

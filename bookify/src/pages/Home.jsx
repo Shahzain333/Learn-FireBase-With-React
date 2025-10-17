@@ -22,7 +22,7 @@ function Home() {
         <CardGroup>
             {books.map((book) => (
             // <li>{book.data().name}</li>
-            <BookCard key={book.id} id={book.id} {...book.data()} />
+            <BookCard link={`/book/view/${book.id}`} key={book.id} id={book.id} {...book.data()} />
         ))}
         </CardGroup>
         

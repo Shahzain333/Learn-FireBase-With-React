@@ -11,7 +11,7 @@ import {
 } from 'firebase/auth'
 
 // Import From Firebase FireStoe
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs, doc, getDoc, Query, where } from 'firebase/firestore'
 // Import From Firebase Storage
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
@@ -113,6 +113,44 @@ export const FirebaseProvider = (props) => {
   }
 
   // function for Get Books By Id
+  const getBooksById = async (id) => {
+    const docRef = doc(firestore, "books", id);
+    const result = await getDoc(docRef);
+    return result;
+  }
+
+  // function for Buy Books
+  const placeOrder = async (bookId, quantity) => {
+    const collectionRef = collection(firestore, 'books', bookId, "orders");
+    const result = await addDoc(collectionRef, {
+      userId: user.uid,
+      userEmail: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      quantity: Number(quantity),
+    })
+    return result;
+  }
+
+  // Function For MyFetchOrders
+  const fetchMyBooks = async (userID) => {
+    
+    //if(!user) return null;
+
+    const collectionRef = collection(firestore, 'books');
+    const query = Query(collectionRef, where("userId", "==", userID));
+    const result = await getDocs(query);
+    //console.log("My Orders:", result);
+    return result;
+
+  }
+
+  // Function for get orders
+  const getOrders = async (bookId) => {
+    const collectionRef = collection(firestore, 'books', bookId, "orders");
+    const result = await getDocs(collectionRef);
+    return result;
+  }
 
   return (
     <FirebaseContext.Provider 
@@ -124,6 +162,11 @@ export const FirebaseProvider = (props) => {
         handleCreateNewListing,
         getListAllBooks, 
         getImageUrl,
+        getBooksById,
+        placeOrder,
+        fetchMyBooks,
+        user,
+        getOrders,
       }}>
         
         {props.children}

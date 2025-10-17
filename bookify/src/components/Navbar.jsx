@@ -15,6 +15,7 @@ function MyNavbar() {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/book/list">Add Listing</Nav.Link>
                     {/* <NavLink to="/book/list">Add LIsting</NavLink> */}
+                    <Nav.Link href="/book/orders">Orders</Nav.Link>
                 </Nav>
             </Container>
       </Navbar>
